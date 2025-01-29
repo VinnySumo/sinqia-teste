@@ -1,68 +1,53 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
+/* Estilo base para o body */
 body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
   margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  padding: 0;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Responsividade do Login */
+@media (max-width: 768px) {
+  .login_container {
+    padding: 15px;
   }
-  a:hover {
-    color: #747bff;
+
+  .login_form {
+    padding: 20px;
+    width: 90%; /* Menor largura para dispositivos móveis */
   }
-  button {
-    background-color: #f9f9f9;
+
+  .login_form h2 {
+    font-size: 1.3rem;
+  }
+
+  .login_form input,
+  .login_form button {
+    font-size: 14px; /* Ajuste do tamanho dos inputs e botão */
+    padding: 12px;
+  }
+}
+
+/* Para dispositivos móveis pequenos */
+@media (max-width: 480px) {
+  .login_form {
+    padding: 15px;
+    width: 100%;
+  }
+
+  .login_form input,
+  .login_form button {
+    padding: 10px; /* Menor padding para telas menores */
+  }
+
+  .login_form h2 {
+    font-size: 1.1rem; /* Ajuste do título para telas menores */
+  }
+}
+
+/* Para telas grandes (desktops) */
+@media (min-width: 1024px) {
+  .login_form {
+    width: 40%; /* Formulário maior em telas grandes */
   }
 }

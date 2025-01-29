@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./login.module.css"; //css do login
+import styles from "./login.module.css"; // Corrigido para usar o styles
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -21,7 +21,7 @@ const Login = () => {
 
   return (
     <div className={styles.login_container}>
-      <form className="login-form" onSubmit={handleLogin}>
+      <form className={styles.login_form} onSubmit={handleLogin}>
         <h2>Login</h2>
         <input
           type="email"
@@ -37,7 +37,16 @@ const Login = () => {
           onChange={(e) => setSenha(e.target.value)}
           required
         />
+        <div className={styles.options}>
+          <p>
+            <a href="/recuperar-senha">Esqueceu a senha?</a>
+          </p>
+          <p>
+            <a href="/cadastro">Cadastrar-se</a>
+          </p>
+        </div>
         <button type="submit">Entrar</button>
+        
       </form>
     </div>
   );

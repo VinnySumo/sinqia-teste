@@ -1,0 +1,72 @@
+/* Estilo para o contêiner de cadastro */
+.cadastro_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #f1f1f1;
+  }
+  
+  /* Estilo do formulário de cadastro */
+  .cadastro_form {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    position: relative; /* Importante para posicionar a seta dentro do formulário */
+  }
+  
+  .cadastro_form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .cadastro_form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .cadastro_form input:focus {
+    outline: none;
+    border-color: #007bff;
+  }
+  
+  .cadastro_form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .cadastro_form button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Estilo para a seta dentro do formulário */
+  .voltar {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+  }
+  
+  .voltar_icone {
+    color: #007bff;
+    transition: color 0.3s ease;
+  }
+  
+  .voltar_icone:hover {
+    color: #0056b3;
+  }
+  

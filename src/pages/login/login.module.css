@@ -1,4 +1,4 @@
-.login-container {
+.login_container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -6,20 +6,21 @@
     background: linear-gradient(120deg, #007bff, #00c6ff);
   }
   
-  .login-form {
+  .login_form {
     background: white;
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    width: 300px;
+    width: 55vh;
+    height: 30vh;
     text-align: center;
   }
   
-  .login-form h2 {
+  .login_form h2 {
     margin-bottom: 1rem;
   }
   
-  .login-form input {
+  .login_form input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
@@ -27,8 +28,8 @@
     border-radius: 5px;
   }
   
-  .login-form button {
-    width: 100%;
+  .login_form button {
+    width: 80%;
     padding: 10px;
     background-color: #007bff;
     color: white;
@@ -41,4 +42,26 @@
   .login-form button:hover {
     background-color: #0056b3;
   }
+
+  /* Estilos para a seção de opções */
+.options {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.options p {
+  margin: 5px 0;
+}
+
+.options a {
+  text-decoration: none;
+  color: #007bff;
+  font-size: 0.9rem;
+}
+
+.options a:hover {
+  text-decoration: underline;
+}
+
   

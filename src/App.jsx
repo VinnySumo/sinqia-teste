@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { BrowserRouter, Routes, Route } from 'react-router-dom';  // Importar as dependências do React Router
-import Login from './pages/login/login'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'; 
+
+import Login from './pages/login/login' //login
+import Cadastro from './pages/login/cadastro/cadastro'; //cadastro
 import './App.css'
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
        <BrowserRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/cadastro" element={<Cadastro />} />
         {/* <Route path="/home" element={<Home />} /> */}
       </Routes>
     </BrowserRouter>
