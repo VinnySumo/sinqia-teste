@@ -1,21 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./login.module.css"; // Corrigido para usar o styles
+import useFetch from "../../components/hooks/hookFetch";
+import styles from "./login.module.css"; // CSS login
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
+  const { request, loading, error } = useFetch(); // Usando o hook aqui
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
 
-    // Simulando autenticação (aqui você chamaria a API do backend)
-    if (email === "admin@teste.com" && senha === "123456") {
+    
+    // Chamando a API para verificar o login
+    const response = await request("http://localhost:3333/loginUsuario", "POST", { usu_email: email, usu_senha: senha });
+
+    if (response && response.sucesso) {
       localStorage.setItem("usuario", JSON.stringify({ email }));
       navigate("/home"); // Redireciona para a Home após login
     } else {
-      alert("Email ou senha incorretos!");
+      alert(error || "Ocorreu um erro ao tentar fazer o login. Tente novamente."); // Exibe um erro amigável
     }
   };
 
@@ -45,8 +50,10 @@ const Login = () => {
             <a href="/cadastro">Cadastrar-se</a>
           </p>
         </div>
-        <button type="submit">Entrar</button>
-        
+        <button type="submit" disabled={loading}>Entrar</button>
+
+       
+        {error && <p style={{ color: "red" }}>Erro: {error}</p>}
       </form>
     </div>
   );

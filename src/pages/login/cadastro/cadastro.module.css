@@ -69,4 +69,17 @@
   .voltar_icone:hover {
     color: #0056b3;
   }
+
+  .senha_container {
+    position: relative;
+  }
+  
+  .eye_icon {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+  
   

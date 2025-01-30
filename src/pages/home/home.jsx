@@ -7,7 +7,7 @@ const Home = () => {
   const [pontosTuristicos, setPontosTuristicos] = useState([]);
   const [termoBusca, setTermoBusca] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(1);
-  const itensPorPagina = 10;
+  const itensPorPagina = 14;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,8 +17,7 @@ const Home = () => {
       { id: 3, nome: "Floresta Amazônica", categoria: "Florestas", localizacao: "Amazônia, BR" },
       { id: 4, nome: "Baladas de São Paulo", categoria: "Vida Noturna", localizacao: "São Paulo, SP" },
       { id: 5, nome: "Parque de Diversões Beto Carrero", categoria: "Diversão", localizacao: "Santa Catarina, SC" },
-      { id: 5, nome: "Parque de Diversões Beto Carrero", categoria: "Diversão", localizacao: "Santa Catarina, SC" },
-      { id: 5, nome: "Parque de Diversões Beto Carrero", categoria: "Diversão", localizacao: "Santa Catarina, SC" },
+      // Adicione mais dados se necessário
     ];
 
     setPontosTuristicos(dados);
@@ -33,6 +32,11 @@ const Home = () => {
   const indexFinal = indexInicial + itensPorPagina;
   const pontosPaginados = pontosFiltrados.slice(indexInicial, indexFinal);
   const totalPaginas = Math.ceil(pontosFiltrados.length / itensPorPagina);
+
+  // Função para navegar para a página de detalhes
+  const handleCardClick = (id) => {
+    navigate(`/detalheturismo/${id}`); // Redireciona para a página de detalhes passando o ID
+  };
 
   return (
     <div className={styles.container}>
@@ -60,7 +64,7 @@ const Home = () => {
       <div className={styles.gridContainer}>
         {pontosPaginados.length > 0 ? (
           pontosPaginados.map((ponto) => (
-            <div key={ponto.id} className={styles.card}>
+            <div key={ponto.id} className={styles.card} onClick={() => handleCardClick(ponto.id)}>
               {/* Aqui vai a imagem no futuro */}
               <div className={styles.cardImage}></div> 
               <div className={styles.cardContent}>
