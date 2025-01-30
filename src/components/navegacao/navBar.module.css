@@ -1,0 +1,37 @@
+.navbar {
+    background: #007bff;
+    padding: 15px 0;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%; /* Agora ocupa toda a largura */
+    /* height: 8%; */
+    z-index: 100;
+  }
+  
+  .menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .menu li {
+    display: inline;
+  }
+  
+  .menu a {
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+  
+  .menu a:hover {
+    color: #ffdd57;
+  }
+  
