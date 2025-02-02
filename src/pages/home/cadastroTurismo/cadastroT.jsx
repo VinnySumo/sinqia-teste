@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../../../components/navegacao/navBar'; // Importando o menu
 import { useNavigate } from 'react-router-dom';
 import styles from './cadastroT.module.css';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import Navbar from '../../../components/navegacao/navBar';
 
 const CadastroTurismo = () => {
   const [nome, setNome] = useState('');
@@ -10,16 +11,31 @@ const CadastroTurismo = () => {
   const [cidade, setCidade] = useState('');
   const [estado, setEstado] = useState('');
   const [estados, setEstados] = useState([]);
-  const navigate = useNavigate();
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   // Fetch dos estados
   useEffect(() => {
     const fetchEstados = async () => {
-      const response = await fetch('/api/estados');
-      const data = await response.json();
-      setEstados(data);
+      try {
+        const response = await fetch('http://localhost:3333/estados');
+        const result = await response.json();
+
+        const estadosData = result.dados || [];
+
+        if (Array.isArray(estadosData)) {
+          setEstados(estadosData);
+        } else {
+          setError('Erro ao carregar estados');
+        }
+      } catch (error) {
+        setError('Erro ao buscar estados');
+      } finally {
+        setLoading(false);
+      }
     };
+
     fetchEstados();
   }, []);
 
@@ -32,35 +48,47 @@ const CadastroTurismo = () => {
     }
 
     const pontoTuristico = {
-      nome,
-      descricao,
-      localizacao,
-      cidade,
-      estado,
+      pont_nome: nome,
+      pont_descricao: descricao,
+      pont_localizacao: localizacao,
+      pont_cidade: cidade,
+      pont_estado: estado,
     };
 
-    // Enviar para a API (substitua o URL pela sua API real)
-    const response = await fetch('/api/pontos', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(pontoTuristico),
-    });
+    try {
+      const response = await fetch('http://localhost:3333/pturistico/cadastro', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(pontoTuristico),
+      });
 
-    if (response.ok) {
-      alert('Ponto turístico cadastrado com sucesso!');
-      navigate('/home');
-    } else {
-      alert('Erro ao cadastrar ponto turístico');
+      const result = await response.json();
+
+      if (response.ok) {
+        alert('Ponto turístico cadastrado com sucesso!');
+        navigate('/home');
+      } else {
+        alert(result.mensagem || 'Erro ao cadastrar ponto turístico');
+      }
+    } catch (error) {
+      alert('Erro ao conectar com a API');
     }
   };
 
+  if (error) {
+    return <div>{error}</div>;
+  }
+
   return (
     <div className={styles.container}>
-      <Navbar /> {/* Adicionando o menu de navegação */}
-
+      <Navbar />
+      <div className={styles.voltar}>
+        <AiOutlineArrowLeft size={30} onClick={() => navigate('/home')} className={styles.voltar_icone} />
+      </div>
       <h2 className={styles.titulo}>Cadastro de Ponto Turístico</h2>
+      
       <form onSubmit={handleSubmit}>
         <div className={styles.inputContainer}>
           <label htmlFor="nome">Nome</label>
@@ -81,13 +109,18 @@ const CadastroTurismo = () => {
             value={estado}
             onChange={(e) => setEstado(e.target.value)}
             className={styles.input}
+            disabled={loading}
           >
             <option value="">Selecione o estado</option>
-            {estados.map((estado) => (
-              <option key={estado.sigla} value={estado.sigla}>
-                {estado.nome}
-              </option>
-            ))}
+            {loading ? (
+              <option>Carregando estados...</option>
+            ) : (
+              estados.map((estado) => (
+                <option key={estado.es_siglas} value={estado.es_siglas}>
+                  {estado.es_nome} - {estado.es_siglas}
+                </option>
+              ))
+            )}
           </select>
         </div>
 
@@ -128,13 +161,7 @@ const CadastroTurismo = () => {
           />
         </div>
 
-        
-
-       
-
-        
-
-        {error && <p className={styles.error}>{error}</p>} {/* Exibe erro se algum campo não for preenchido */}
+        {error && <p className={styles.error}>{error}</p>}
 
         <button type="submit" className={styles.botaoCadastro}>
           Cadastrar

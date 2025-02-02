@@ -1,92 +1,95 @@
+/* navbar.module.css */
 .navbar {
-    background: #007bff;
-    padding: 15px 0;
-    text-align: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%; /* Agora ocupa toda a largura */
-    /* height: 8%; */
-    z-index: 100;
-  }
-  
-  .menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .menu li {
-    display: inline;
-  }
-  
-  .menu a {
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-weight: bold;
-    transition: 0.3s;
-  }
-  
-  .menu a:hover {
-    color: #ffdd57;
-  }
+  background: #007bff;
+  padding: 15px 0;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+}
 
-  .profile {
-    display: flex;
-    align-items: center;
-    color: white;
-    font-size: 16px;
-    position: absolute; /* Posiciona o perfil fora do fluxo do menu */
-    right: 20px; /* Alinha o perfil à direita */
-    top: 50%; /* Centraliza verticalmente */
-    transform: translateY(-50%); /* Ajusta o centro exato */
-    cursor: pointer; /* Para dar a sensação de que o ícone é clicável */
-  }
-  
-  .avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-right: 10px;
-    cursor: pointer; /* Faz o ícone parecer clicável */
-  }
-  
-  .avatar img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  
-  .profile a {
-    color: black;
-    text-decoration: none;
-    margin-left: 10px;
-  }
-  
-  .dropdownMenu {
-    position: absolute;
-    top: 35px;
-    right: 0;
-    background-color: #fff;
-    color: #333;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    z-index: 100;
-  }
-  
-  .dropdownMenu a {
-    display: block;
-    color: #007bff;
-    text-decoration: none;
-    margin: 5px 0;
-  }
-  
-  .dropdownMenu a:hover {
-    color: #0056b3;
-  }
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 20px;
+}
+
+.menu li {
+  display: inline;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  color: #ffdd57;
+}
+
+/* Perfil e nome do usuário com avatar à direita */
+.profile {
+  display: flex;
+  align-items: center;
+  color: white;
+  font-size: 16px;
+  margin-left: 20px; /* Mantém o perfil alinhado à esquerda */
+}
+
+.profile span {
+  margin-right: 10px; /* Deixa espaço entre o nome e o ícone */
+}
+
+.avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer; /* Faz o ícone parecer clicável */
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile a {
+  color: black;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  color: #333;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+}
+
+.dropdownMenu a {
+  display: block;
+  color: #007bff;
+  text-decoration: none;
+  margin: 5px 0;
+}
+
+.dropdownMenu a:hover {
+  color: #0056b3;
+}

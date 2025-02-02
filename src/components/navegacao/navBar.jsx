@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaUserCircle } from 'react-icons/fa'; // Importando o ícone de usuário
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./navBar.module.css";
+import { userLogout } from "../../redux/usuario/action";
 
 const Navbar = () => {
-  const [usuario, setUsuario] = useState(null);
+  const { user } = useSelector((state) => state.user); // Obtendo os dados do usuário do Redux
+  const dispatch = useDispatch();
   const [dropdownVisible, setDropdownVisible] = useState(false);
 
-  useEffect(() => {
-    // Recupera os dados do usuário do localStorage
-    const user = JSON.parse(localStorage.getItem("usuario"));
-    if (user) {
-      setUsuario(user); // Atualiza o estado com os dados do usuário
-    }
-  }, []); // O useEffect roda uma vez quando o componente é montado
-
   const handleLogout = () => {
-    localStorage.removeItem("usuario");
-    setUsuario(null);
+    dispatch(userLogout()); // Chama a ação de logout para limpar o estado do Redux
+    setDropdownVisible(false); // Fecha o dropdown
   };
 
   return (
@@ -31,22 +26,21 @@ const Navbar = () => {
 
       {/* Perfil e dropdown */}
       <div className={styles.profile}>
+      {user && user.usu_nome ? ( // Verifica se o usuário está logado
+          <span>{user.usu_nome}</span> // Exibe o nome do usuário
+        ) : null}
         <div 
           className={styles.avatar} 
           onClick={() => setDropdownVisible(!dropdownVisible)} // Alterna a visibilidade do dropdown
         >
           <FaUserCircle size={30} color="white" />
         </div>
-        {usuario ? (
-          <span>{usuario.nome}</span> // Exibe o nome do usuário
-        ) : null}
-
+        
         {/* Dropdown menu */}
         {dropdownVisible && (
           <div className={styles.dropdownMenu}>
-            {usuario ? (
+            {user ? (
               <div>
-                
                 <a href="#" onClick={handleLogout}>Sair</a>
               </div>
             ) : (

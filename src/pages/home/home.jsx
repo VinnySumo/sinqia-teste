@@ -7,26 +7,48 @@ const Home = () => {
   const [pontosTuristicos, setPontosTuristicos] = useState([]);
   const [termoBusca, setTermoBusca] = useState("");
   const [paginaAtual, setPaginaAtual] = useState(1);
+  const [carregando, setCarregando] = useState(false);
+  const [erro, setErro] = useState(null);
   const itensPorPagina = 14;
   const navigate = useNavigate();
 
   useEffect(() => {
-    const dados = [
-      { id: 1, nome: "Cristo Redentor", categoria: "Turismo", localizacao: "Rio de Janeiro, RJ" },
-      { id: 2, nome: "Praia de Copacabana", categoria: "Praias", localizacao: "Rio de Janeiro, RJ" },
-      { id: 3, nome: "Floresta Amazônica", categoria: "Florestas", localizacao: "Amazônia, BR" },
-      { id: 4, nome: "Baladas de São Paulo", categoria: "Vida Noturna", localizacao: "São Paulo, SP" },
-      { id: 5, nome: "Parque de Diversões Beto Carrero", categoria: "Diversão", localizacao: "Santa Catarina, SC" },
-      // Adicione mais dados se necessário
-    ];
-
-    setPontosTuristicos(dados);
+    const carregarPontos = async () => {
+      setCarregando(true);
+      try {
+        const resposta = await fetch("http://localhost:3333/pturistico");
+        if (!resposta.ok) {
+          throw new Error("Erro ao buscar dados da API.");
+        }
+        const dados = await resposta.json();
+  
+        console.log(dados);  // Verifique o que está sendo retornado pela API
+  
+        // Agora vamos acessar 'dados' para obter os pontos turísticos
+        if (dados.sucesso) {
+          setPontosTuristicos(dados.dados); // Atualiza o estado com os pontos turísticos
+        } else {
+          console.error("Erro na resposta da API:", dados.mensagem);
+          setPontosTuristicos([]); // Caso haja algum problema na resposta, setamos um array vazio
+        }
+      } catch (erro) {
+        console.error(erro); // Exibe o erro no console
+        setErro(erro.message);
+        setPontosTuristicos([]); // Caso haja erro, definimos um array vazio
+      } finally {
+        setCarregando(false);
+      }
+    };
+  
+    carregarPontos();
   }, []);
 
   const pontosFiltrados = pontosTuristicos.filter((ponto) =>
-    ponto.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
-    ponto.localizacao.toLowerCase().includes(termoBusca.toLowerCase())
+    (ponto.pont_nome?.toLowerCase().includes(termoBusca.toLowerCase()) || 
+     ponto.pont_localizacao?.toLowerCase().includes(termoBusca.toLowerCase()) || 
+     ponto.pont_cidade?.toLowerCase().includes(termoBusca.toLowerCase()))
   );
+  
 
   const indexInicial = (paginaAtual - 1) * itensPorPagina;
   const indexFinal = indexInicial + itensPorPagina;
@@ -56,28 +78,36 @@ const Home = () => {
             onChange={(e) => setTermoBusca(e.target.value)}
           />
           <button className={styles.botaoCadastro} onClick={() => navigate("/cadastroturismo")}>
-            Adicionar Ponto Turistico
+            Adicionar Ponto Turístico
           </button>
         </div>
       </div>
 
-      <div className={styles.gridContainer}>
-        {pontosPaginados.length > 0 ? (
-          pontosPaginados.map((ponto) => (
-            <div key={ponto.id} className={styles.card} onClick={() => handleCardClick(ponto.id)}>
-              {/* Aqui vai a imagem no futuro */}
-              <div className={styles.cardImage}></div> 
-              <div className={styles.cardContent}>
-                <h2>{ponto.nome}</h2>
-                <p>{ponto.localizacao}</p>
-              </div>
-            </div>
-          ))
-        ) : (
-          <p className={styles.mensagem}>Nenhum ponto encontrado.</p>
-        )}
-      </div>
+      {/* Exibir carregamento ou erro */}
+      {carregando && <p className={styles.mensagem}>Carregando...</p>}
+      {erro && <p className={styles.mensagemErro}>{erro}</p>}
 
+      {/* Exibir pontos turísticos */}
+      {!carregando && !erro && (
+        <div className={styles.gridContainer}>
+         {pontosPaginados.length > 0 ? (
+  pontosPaginados.map((ponto) => (
+    <div key={ponto.pont_id} className={styles.card} onClick={() => handleCardClick(ponto.pont_id)}>
+      <div className={styles.cardImage}></div> 
+      <div className={styles.cardContent}>
+        <h2>{ponto.pont_nome}</h2>
+        <p>{ponto.pont_localizacao}</p>
+      </div>
+    </div>
+  ))
+) : (
+  <p className={styles.mensagem}>Nenhum ponto encontrado.</p>
+)}
+
+        </div>
+      )}
+
+      {/* Paginação */}
       {totalPaginas > 1 && (
         <div className={styles.paginacao}>
           <button onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))} disabled={paginaAtual === 1}>

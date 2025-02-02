@@ -1,26 +1,38 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import useFetch from "../../components/hooks/hookFetch";
-import styles from "./login.module.css"; // CSS login
+import { userLogin } from "../../redux/usuario/action"; // Importa a ação do Redux
+import styles from "./login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
   const navigate = useNavigate();
-  const { request, loading, error } = useFetch(); // Usando o hook aqui
+  const dispatch = useDispatch();
+  const { request, loading, error } = useFetch();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    
     // Chamando a API para verificar o login
-    const response = await request("http://localhost:3333/loginUsuario", "POST", { usu_email: email, usu_senha: senha });
+    const response = await request("http://localhost:3333/loginUsuario", "POST", {
+      usu_email: email,
+      usu_senha: senha,
+    });
 
     if (response && response.sucesso) {
-      localStorage.setItem("usuario", JSON.stringify({ email }));
-      navigate("/home"); // Redireciona para a Home após login
+      const { usu_id, usu_nome, usu_email } = response.dados;
+
+      // Salva no Redux
+      dispatch(userLogin({ usu_id, usu_nome, usu_email }));
+
+      // Salva no localStorage
+      localStorage.setItem("usu_id", usu_id);
+
+      navigate("/home"); // Redireciona para a home após login
     } else {
-      alert(error || "Ocorreu um erro ao tentar fazer o login. Tente novamente."); // Exibe um erro amigável
+      alert(error || "Ocorreu um erro ao tentar fazer o login. Tente novamente.");
     }
   };
 
@@ -51,8 +63,6 @@ const Login = () => {
           </p>
         </div>
         <button type="submit" disabled={loading}>Entrar</button>
-
-       
         {error && <p style={{ color: "red" }}>Erro: {error}</p>}
       </form>
     </div>
