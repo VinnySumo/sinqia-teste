@@ -1,13 +1,13 @@
-# Detalhes do Ponto Turístico
+# Front do CRUD
 
-Este projeto é uma aplicação React que permite visualizar, editar e excluir detalhes de pontos turísticos. Ele faz uso de uma API backend para buscar, atualizar e deletar os dados relacionados aos pontos turísticos. O sistema permite a edição do nome, estado, cidade, localização e descrição de cada ponto turístico.
+Este arquivo faz o front-end do site de turismo, incluindo uma landing page, sistema de login, cadastro de usuários, tabela para visualização de pontos turísticos, botões de edição e exclusão, além de possuir um mapa interativo para exploração de locais turísticos ao redor do mundo.
 
 ## Funcionalidades
 
-- **Visualizar Detalhes**: Exibe as informações detalhadas sobre um ponto turístico.
-- **Editar Ponto Turístico**: Permite editar o nome, estado, cidade, localização e descrição do ponto turístico.
-- **Excluir Ponto Turístico**: Permite excluir um ponto turístico da base de dados.
-- **Controle de Carregamento e Erro**: Exibe mensagens de carregamento e erro ao buscar ou manipular dados.
+- *Landing Page*: Apresentação inicial com destaques do site.
+- *Login e Cadastro*: Permite aos usuários criar contas e acessar a plataforma.
+- *Tabela de Pontos Turísticos*: Exibição dos locais cadastrados com opções para editar e excluir.
+- *Mapa Interativo*: Exploração de pontos turísticos com localização em tempo real.
 
 ## Tecnologias Utilizadas
 
@@ -16,7 +16,57 @@ Este projeto é uma aplicação React que permite visualizar, editar e excluir d
 - **Fetch API**: Para comunicação com o backend e manipulação de dados.
 - **CSS Modules**: Para o gerenciamento de estilos de forma modular.
   
-## Estrutura de Diretórios
+## Instalação
 
+1. Clone o repositório:
+   bash
+   git clone https://github.com/luisciaramicoli/CRUD
+   
+2. Navegue até o diretório do projeto:
+   bash
+   cd crud
+   
+3. Instale as dependências:
+   bash
+   npm install
+   
+4. Execute o projeto:
+   bash
+   npm run dev
+   
+
+## Como Usar
+
+1. Acesse a landing page para explorar o site.
+3. Navegue até a tabela de pontos turísticos para visualizar, editar ou excluir dados.
+
+## Contribuição
+
+Contribuições são sempre bem-vindas! Por favor, siga as etapas abaixo:
+
+1. Faça um fork do repositório.
+2. Crie um branch para sua feature/bugfix:
+   bash
+   git checkout -b minha-feature
+   
+3. Commit suas alterações:
+   bash
+   git commit -m "Adicionando minha feature"
+   
+4. Envie para o branch principal:
+   bash
+   git push origin minha-feature
+   
+5. Abra um Pull Request.
+
+## Contato
+
+- *Nome*: Vynicios Raphael Silva de Souza
+- *Email*: vinnyrafael015@hotmail.com
+- *GitHub*: [luisciaramicoli](https://github.com/luisciaramicoli)
+
+---
+
+Sinta-se à vontade para editar este README com informações mais detalhadas sobre o seu projeto!
 
  
