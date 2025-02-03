@@ -1,6 +1,6 @@
 # Front do CRUD
 
-Este arquivo faz o front-end do site de turismo, incluindo uma landing page, sistema de login, cadastro de usuários, tabela para visualização de pontos turísticos, botões de edição e exclusão, além de possuir um mapa interativo para exploração de locais turísticos ao redor do mundo.
+Este arquivo faz o front-end do site de turismo, incluindo uma landing page, sistema de login, cadastro de usuários, tabela para visualização de pontos turísticos, botões de edição e exclusão
 
 ## Funcionalidades
 
