@@ -50,14 +50,33 @@ const DetalhesTurismo = () => {
   return (
     <div className={styles.container}>
       <Navbar></Navbar>
-      <h2 className={styles.titulo}>{ponto.pont_nome}</h2>
-      <p><strong>Descrição:</strong> {ponto.pont_descricao}</p>
-      <p><strong>Localização:</strong> {ponto.pont_localizacao}</p>
-      <p><strong>Cidade:</strong> {ponto.pont_cidade}</p>
-      <p><strong>Estado:</strong> {ponto.pont_estado}</p>
+      <div className={styles.cardContainer}>
+        
+        <div className={styles.infoContainer}>
+          <h2 className={styles.titulo}>{ponto.pont_nome}</h2>
+          <div className={styles.card}>
+          <img src="/imagens/cristoredentor.jpeg" alt="Imagem do ponto turístico" className={styles.cardImage} />
+        
+        <div className={styles.infoText}>
+          
+        <p><strong>Estado:</strong> {ponto.pont_estado}</p>
+        <p><strong>Cidade:</strong> {ponto.pont_cidade}</p>
+        <p><strong>Localização:</strong> {ponto.pont_localizacao}</p>
+        <p><strong>Descrição:</strong> {ponto.pont_descricao}</p>
+
+          </div>
+          </div>
+        </div>
+      </div>
+      {/* Seção de comentários */}
+      {/* <div className={styles.comentarios}>
+        <h3>Comente sobre este lugar</h3>
+        <textarea className={styles.textarea} placeholder="Escreva seu comentário..." />
+        <button className={styles.botaoComentar}>Comentar</button>
+      </div> */}
       <button onClick={() => navigate('/home')} className={styles.botaoVoltar}>
-        Voltar
-      </button>
+            Voltar
+          </button>
     </div>
   );
 };

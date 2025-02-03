@@ -18,10 +18,6 @@ const Navbar = () => {
     <nav className={styles.navbar}>
       <ul className={styles.menu}>
         <li><a href="/home">Home</a></li>
-        <li><a href="#">Praias</a></li>
-        <li><a href="#">Florestas</a></li>
-        <li><a href="#">Vida Noturna</a></li>
-        <li><a href="#">Diversão</a></li>
       </ul>
 
       {/* Perfil e dropdown */}
