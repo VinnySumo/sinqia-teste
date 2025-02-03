@@ -17,3 +17,17 @@ export const userLogin = (payload) => {
 export const userLogout = () => ({
   type: actionType.logout
 });
+
+export const setPontoTuristico = (ponto) => {
+  return {
+    type: 'SET_PONTO_TURISTICO',
+    payload: ponto,
+  };
+};
+
+export const setErroPontoTuristico = (erro) => {
+  return {
+    type: 'SET_ERRO_PONTO_TURISTICO',
+    payload: erro,
+  };
+};
