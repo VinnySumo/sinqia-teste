@@ -20,11 +20,11 @@ Este arquivo faz o front-end do site de turismo, incluindo uma landing page, sis
 
 1. Clone o repositório:
    bash
-   git clone https://github.com/luisciaramicoli/CRUD
+   git clone https://github.com/VinnySumo/sinqia-teste
    
 2. Navegue até o diretório do projeto:
    bash
-   cd crud
+   cd sinqia-teste
    
 3. Instale as dependências:
    bash
@@ -63,7 +63,7 @@ Contribuições são sempre bem-vindas! Por favor, siga as etapas abaixo:
 
 - *Nome*: Vynicios Raphael Silva de Souza
 - *Email*: vinnyrafael015@hotmail.com
-- *GitHub*: [luisciaramicoli](https://github.com/luisciaramicoli)
+- *GitHub*: [https://github.com/VinnySumo]
 
 ---
 
