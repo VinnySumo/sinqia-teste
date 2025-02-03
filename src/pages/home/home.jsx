@@ -111,11 +111,11 @@ const Home = () => {
       {totalPaginas > 1 && (
         <div className={styles.paginacao}>
           <button onClick={() => setPaginaAtual((prev) => Math.max(prev - 1, 1))} disabled={paginaAtual === 1}>
-            {"<"} Anterior
+             Anterior
           </button>
           <span>Página {paginaAtual} de {totalPaginas}</span>
           <button onClick={() => setPaginaAtual((prev) => Math.min(prev + 1, totalPaginas))} disabled={paginaAtual === totalPaginas}>
-            Próximo {">"}
+            Próximo 
           </button>
         </div>
       )}

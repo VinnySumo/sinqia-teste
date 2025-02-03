@@ -115,6 +115,64 @@
   background-color: #218838;
 }
 
+/* Estilo dos botões de ação */
+.botoesAcoes {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.botaoEditar,
+.botaoDeletar,
+.botaoSalvar,
+.botaoCancelar,
+.botaoVoltar {
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.botaoEditar {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.botaoEditar:hover {
+  background-color: #45a049;
+}
+
+.botaoDeletar {
+  background-color: #f44336;
+  color: white;
+}
+
+.botaoDeletar:hover {
+  background-color: #e53935;
+}
+
+.botaoSalvar {
+  background-color: #007BFF;
+  color: white;
+}
+
+.botaoSalvar:hover {
+  background-color: #0056b3;
+}
+
+.botaoCancelar {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.botaoCancelar:hover {
+  background-color: #ec971f;
+}
+
+
 @media (max-width: 768px) {
   .container {
     padding: 15px;

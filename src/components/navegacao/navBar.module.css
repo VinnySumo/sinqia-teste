@@ -38,6 +38,14 @@
   color: #ffdd57;
 }
 
+/* Logo no lado esquerdo, agora em um formato circular e tamanho ajustado */
+.logo img {
+  width: 40px;  /* Ajuste o tamanho da imagem conforme necessário */
+  height: 40px; /* Ajuste o tamanho da imagem conforme necessário */
+  border-radius: 50%; /* Faz a imagem ficar circular */
+  object-fit: cover;  /* Garante que a imagem ocupe todo o espaço sem deformar */
+}
+
 /* Perfil e nome do usuário com avatar à direita */
 .profile {
   display: flex;

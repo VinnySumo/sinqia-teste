@@ -1,0 +1,169 @@
+/* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Corpo da Página */
+  .landing_page {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+  
+  /* Estilo do Header */
+  .landing_header {
+    background-color: #0066cc;
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header_content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+  
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  nav ul {
+    display: flex;
+    gap: 1.5rem;
+    list-style-type: none;
+  }
+  
+  .nav_link {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.3s;
+  }
+  
+  .nav_link:hover {
+    color: #ff5733;
+  }
+  
+  /* Seção Hero */
+  .hero {
+    background: linear-gradient(135deg, #0066cc, #004d99);
+    color: white;
+    text-align: center;
+    padding: 6rem 2rem;
+    border-bottom: 3px solid #004d99;
+  }
+  
+  .hero_content {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero_title {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+  }
+  
+  .hero_description {
+    font-size: 1.3rem;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+  }
+  
+  .cta_button {
+    background-color: #ff5733;
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 1.2rem;
+    border: none;
+    text-decoration: none;
+    border-radius: 30px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .cta_button:hover {
+    background-color: #e94e00;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Seção Funcionalidades */
+  .features {
+    padding: 4rem 2rem;
+    text-align: center;
+    background-color: #f0f0f0;
+  }
+  
+  .features_title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  .features_list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+  
+  .feature {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  
+  .feature:hover {
+    transform: translateY(-10px);
+  }
+  
+  .feature_title {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  
+  .feature_description {
+    font-size: 1.1rem;
+    color: #666;
+  }
+  
+  /* Seção de Contato */
+  .contact {
+    background-color: #f7f7f7;
+    text-align: center;
+    padding: 4rem 2rem;
+  }
+  
+  .contact_title {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  .contact_description {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+  }
+  
+  /* Rodapé */
+  .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem 0;
+  }
+  
+  .footer_text {
+    font-size: 1rem;
+  }
+  

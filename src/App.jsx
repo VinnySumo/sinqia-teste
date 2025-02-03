@@ -5,6 +5,7 @@ import Cadastro from './pages/login/cadastro/cadastro'; // cadastro
 import Home from './pages/home/home';
 import CadastroTurismo from './pages/home/cadastroTurismo/cadastroT';
 import DetalhesTurismo from './pages/home/detalhesTurismo/detalhesT';
+import LandingPage from './pages/landingPage/lading';
 import { useSelector, useDispatch } from "react-redux";
 import { userLogin } from './redux/usuario/action'; // Ação de login
 import './App.css'
@@ -26,6 +27,7 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+        <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cadastro" element={<Cadastro />} />
           <Route path="/home" element={<Home />} />
